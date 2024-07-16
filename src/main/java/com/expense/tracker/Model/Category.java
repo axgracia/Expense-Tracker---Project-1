@@ -18,6 +18,14 @@ public class Category {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Expenses> expenses;
 
+    public Category(User user) {
+        this.user = user;
+    }
+
+    public Category() {
+
+    }
+
     // Getters and setters
 }
 
