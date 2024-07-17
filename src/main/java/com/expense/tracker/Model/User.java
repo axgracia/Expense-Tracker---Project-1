@@ -21,5 +21,13 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Budget> budgets;
 
+    public String getUsername() {
+        return "";
+    }
+
+    public Object getPassword() {
+        return null;
+    }
+
     // Getters and setters
 }
