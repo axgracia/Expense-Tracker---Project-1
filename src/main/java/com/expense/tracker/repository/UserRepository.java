@@ -4,5 +4,9 @@ import com.expense.tracker.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    User findByUsername(String username);
+    static User findByUsername(String username) {
+        return null;
+    }
+
+
 }

@@ -29,5 +29,11 @@ public class User {
         return null;
     }
 
+    public void setUsername(String username) {
+    }
+
+    public void setPassword(Object password) {
+    }
+
     // Getters and setters
 }

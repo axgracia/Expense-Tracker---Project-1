@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/expenses")
+@RequestMapping("/api")
 public class ExpensesController {
 
     @Autowired
