@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/expenses")
@@ -19,9 +20,15 @@ public class ExpensesController {
         return expensesRepository.findByUserId(userId);
     }
 
+    @GetMapping("/{id}")
+    public Expenses getExpenseById(@PathVariable Long id) {
+        Optional<Expenses> expense = expensesRepository.findById(id);
+        return expense.orElse(null);  // Return the expense if found, otherwise return null
+    }
+
     @PostMapping
-    public Expenses addExpense(@RequestBody Expenses expense) {
-        return expensesRepository.save(expense);
+    public Expenses addExpenses(@RequestBody Expenses expenses) {
+        return expensesRepository.save(expenses);
     }
 
     @PutMapping("/{id}")
