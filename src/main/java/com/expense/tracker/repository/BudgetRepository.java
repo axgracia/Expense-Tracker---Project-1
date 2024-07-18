@@ -1,6 +1,6 @@
 package com.expense.tracker.repository;
 
-import com.expense.tracker.Model.Budget;
+import com.expense.tracker.model.Budget;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 

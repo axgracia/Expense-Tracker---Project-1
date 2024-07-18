@@ -1,18 +1,26 @@
 package com.expense.tracker.controller;
 
+import java.util.List;
 import com.expense.tracker.repository.UserRepository;
-import com.expense.tracker.Model.User;
+import com.expense.tracker.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api")
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+
+    @GetMapping("/users")
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
 
     // POST request to register a new user
     @PostMapping
@@ -23,8 +31,8 @@ public class UserController {
     // POST request to login a user
     @PostMapping("/login")
     public String loginUser(@RequestBody User user) {
-        User existingUser = UserRepository.findByUsername(user.getUsername());
-        if (existingUser != null && user.getPassword().equals(existingUser.getPassword())) {
+        Optional<User> existingUser = UserRepository.findByUsername(user.getUsername());
+        if (existingUser.isPresent() && user.getPassword().equals(existingUser.getPassword())) {
             return "Login successful";
         } else {
             return "Invalid credentials";

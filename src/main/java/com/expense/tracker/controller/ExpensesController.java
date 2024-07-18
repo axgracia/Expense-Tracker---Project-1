@@ -1,7 +1,8 @@
 package com.expense.tracker.controller;
 
-import com.expense.tracker.Model.Expenses;
+import com.expense.tracker.model.Expenses;
 import com.expense.tracker.repository.ExpensesRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,31 +15,36 @@ public class ExpensesController {
 
     @Autowired
     private ExpensesRepository expensesRepository;
-
-    @GetMapping
-    public List<Expenses> getAllExpenses(@RequestParam Long userId) {
-        return expensesRepository.findByUserId(userId);
+//************************************************************************ GET
+    @GetMapping("/expenses")
+    public List<Expenses> getAllExpenses() {
+        return expensesRepository.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/expenses/{id}")
     public Expenses getExpenseById(@PathVariable Long id) {
-        Optional<Expenses> expense = expensesRepository.findById(id);
-        return expense.orElse(null);  // Return the expense if found, otherwise return null
+        Optional<Expenses> expenseOptional = expensesRepository.findById(id);
+        if(expenseOptional.isEmpty()){
+            throw new RuntimeException("Expense with " + id +"not found");
+        }
+        return expenseOptional.get();
     }
 
-    @PostMapping
-    public Expenses addExpenses(@RequestBody Expenses expenses) {
+    //************************************************************************ POST
+
+    @PostMapping("/expenses") //FIX
+    public Expenses addExpenses(@RequestBody @Valid Expenses expenses) {
         return expensesRepository.save(expenses);
     }
 
-    @PutMapping("/{id}")
-    public Expenses updateExpenses(@PathVariable Long id, @RequestBody Expenses expenses) {
-        expenses.setId(id);
-        return expensesRepository.save(expenses);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteExpenses(@PathVariable Long id) {
-        expensesRepository.deleteById(id);
-    }
+//    @PutMapping("/expenses/{id}")
+//    public Expenses updateExpenses(@PathVariable Long id, @RequestBody Expenses expenses) {
+//        expenses.setId(id);
+//        return expensesRepository.save(expenses);
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    public void deleteExpenses(@PathVariable Long id) {
+//        expensesRepository.deleteById(id);
+//    }
 }
