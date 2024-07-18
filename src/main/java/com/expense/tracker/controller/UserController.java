@@ -31,8 +31,8 @@ public class UserController {
     // POST request to login a user
     @PostMapping("/login")
     public String loginUser(@RequestBody User user) {
-        Optional<User> existingUser = UserRepository.findByUsername(user.getUsername());
-        if (existingUser.isPresent() && user.getPassword().equals(existingUser.getPassword())) {
+       Optional<User> existingUser = userRepository.findByUsername(user.getUsername());
+        if (existingUser.isPresent() && user.getPassword().equals(existingUser.get().getPassword())) {
             return "Login successful";
         } else {
             return "Invalid credentials";
