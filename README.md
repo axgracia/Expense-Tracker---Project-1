@@ -1,5 +1,7 @@
 ## Expense Tracker
 
+[UML:ExpensesTracker-diagram.pdf](https://github.com/user-attachments/files/16315538/UML.ExpensesTracker-diagram.pdf)
+
 ## Overview
 Expense Tracker is a Java-based application designed to help users manage their finances by tracking expenses, budgets, and categories. Built with Spring Boot and Maven, this project leverages the power of SQL databases to store and manage financial data efficiently.
 
