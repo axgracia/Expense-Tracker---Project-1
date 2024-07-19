@@ -28,12 +28,10 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Expenses> expenses;
     @NotEmpty(message = "Categories cannot be empty")
-    //@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Category> categories;
 
     @NotEmpty(message = "Budgets cannot be empty")
-    //@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Budget> budgets;
 

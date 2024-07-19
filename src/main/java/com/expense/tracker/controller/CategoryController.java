@@ -1,7 +1,6 @@
 package com.expense.tracker.controller;
 
 
-import com.expense.tracker.model.Expenses;
 import com.expense.tracker.repository.CategoryRepository;
 import com.expense.tracker.model.Category;
 import jakarta.validation.Valid;

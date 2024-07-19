@@ -18,7 +18,7 @@ public class BudgetController {
 
     // GET request to retrieve all budgets for a specific user
     @GetMapping
-    public List<Budget> getAllBudgets(@RequestParam Long userId) {
+    public List<Budget> getAllBudgets(@RequestParam("userId") Long userId) {
         return budgetRepository.findByUserId(userId);
     }
 
@@ -30,7 +30,7 @@ public class BudgetController {
     }
 
     // POST request to add a new budget
-    @PostMapping
+    @PostMapping("/add")
     public Budget addBudget(@RequestBody Budget budget) {
         return budgetRepository.save(budget);
     }

@@ -37,14 +37,14 @@ public class ExpensesController {
         return expensesRepository.save(expenses);
     }
 
-//    @PutMapping("/expenses/{id}")
-//    public Expenses updateExpenses(@PathVariable Long id, @RequestBody Expenses expenses) {
-//        expenses.setId(id);
-//        return expensesRepository.save(expenses);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public void deleteExpenses(@PathVariable Long id) {
-//        expensesRepository.deleteById(id);
-//    }
+    @PutMapping("/expenses/{id}")
+    public Expenses updateExpenses(@PathVariable Long id, @RequestBody Expenses expenses) {
+        expenses.setId(id);
+        return expensesRepository.save(expenses);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteExpenses(@PathVariable Long id) {
+        expensesRepository.deleteById(id);
+    }
 }
